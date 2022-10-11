@@ -1,0 +1,17 @@
+.buildpath
+.settings/
+.project
+*.patch
+.idea/
+.git/
+runtime/
+vendor/
+.phpintel/
+.env
+.DS_Store
+.phpunit*
+*.cache
+.gitlab-ci.yml
+.php-cs-fixer.php
+.phpstorm.meta.php
+.github/
