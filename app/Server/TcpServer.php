@@ -12,10 +12,14 @@ use Hyperf\Framework\Event\OnReceive;
 class TcpServer implements OnReceiveInterface
 {
     /**
-     * @Inject
      * @var EventDispatcherInterface
      */
-    private $eventDispatcher;
+    protected $eventDispatcher;
+
+    public function __construct(EventDispatcherInterface $eventDispatcher)
+    {
+        $this->eventDispatcher = $eventDispatcher;
+    }
 
     //监听链接事件
     public function onConnect($server, int $fd)
@@ -27,6 +31,7 @@ class TcpServer implements OnReceiveInterface
     public function onReceive($server, int $fd, int $reactorId, string $data): void
     {
         //$server->send($fd, 'recv:' . $data);
+        echo 'onReceive: ' . $data . PHP_EOL;
         $this->eventDispatcher->dispatch(new OnReceive($server, $fd, $reactorId, $data));
     }
 
