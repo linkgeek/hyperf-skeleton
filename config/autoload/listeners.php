@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 /**
+ * 通过配置文件注册监听器
  * This file is part of Hyperf.
  *
  * @link     https://www.hyperf.io

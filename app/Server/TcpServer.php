@@ -32,6 +32,8 @@ class TcpServer implements OnReceiveInterface
     {
         //$server->send($fd, 'recv:' . $data);
         echo 'onReceive: ' . $data . PHP_EOL;
+
+        //触发事件
         $this->eventDispatcher->dispatch(new OnReceive($server, $fd, $reactorId, $data));
     }
 

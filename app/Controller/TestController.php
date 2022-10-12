@@ -27,11 +27,25 @@ class TestController extends AbstractController
         return 'get method' . $id;
     }
 
-    public function test() {
+    public function test()
+    {
 
     }
 
-    public function hello() {
+    public function hello()
+    {
 
+    }
+
+    public function rpc($params)
+    {
+        $params['from'] = 'rpc';
+        return json_encode($params);
+    }
+
+    public function task($params)
+    {
+        $params['from'] = 'task';
+        return $params;
     }
 }

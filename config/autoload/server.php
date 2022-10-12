@@ -44,17 +44,19 @@ return [
         ],
     ],
     'settings' => [
-        Constant::OPTION_ENABLE_COROUTINE => true,
-        Constant::OPTION_WORKER_NUM => swoole_cpu_num(),
-        Constant::OPTION_PID_FILE => BASE_PATH . '/runtime/hyperf.pid',
-        Constant::OPTION_OPEN_TCP_NODELAY => true,
-        Constant::OPTION_MAX_COROUTINE => 100000,
-        Constant::OPTION_OPEN_HTTP2_PROTOCOL => true,
-        Constant::OPTION_MAX_REQUEST => 100000,
-        Constant::OPTION_SOCKET_BUFFER_SIZE => 2 * 1024 * 1024,
-        Constant::OPTION_BUFFER_OUTPUT_SIZE => 2 * 1024 * 1024,
-        // Task Worker 数量
-        'task_worker_num' => 2,
+        Constant::OPTION_ENABLE_COROUTINE => true, //enable_coroutine
+        Constant::OPTION_WORKER_NUM => swoole_cpu_num(), //worker_num
+        Constant::OPTION_PID_FILE => BASE_PATH . '/runtime/hyperf.pid', //pid_file
+        Constant::OPTION_OPEN_TCP_NODELAY => true, //open_tcp_nodelay
+        Constant::OPTION_MAX_COROUTINE => 100000, //max_coroutine
+        Constant::OPTION_OPEN_HTTP2_PROTOCOL => true, //open_http2_protocol
+        Constant::OPTION_MAX_REQUEST => 100000, //max_request
+        Constant::OPTION_SOCKET_BUFFER_SIZE => 2 * 1024 * 1024, //socket_buffer_size
+        Constant::OPTION_BUFFER_OUTPUT_SIZE => 2 * 1024 * 1024, //buffer_output_size
+        // user settings
+        Constant::OPTION_TASK_WORKER_NUM => 2, //task_worker_num
+        Constant::OPTION_LOG_FILE => BASE_PATH . '/runtime/logs/' . APP_NAME . '.log',
+        Constant::OPTION_LOG_LEVEL => SWOOLE_LOG_WARNING,
     ],
     'callbacks' => [
         Event::ON_WORKER_START => [Hyperf\Framework\Bootstrap\WorkerStartCallback::class, 'onWorkerStart'],
